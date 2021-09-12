@@ -2117,11 +2117,11 @@ sigstatusbar(const Arg *arg)
 
 	if (!statussig)
 		return;
-	sv.sival_int = arg->i;
+	sv.sival_int = arg->i | (statussig << 8);
 	if ((statuspid = getstatusbarpid()) <= 0)
 		return;
 
-	sigqueue(statuspid, SIGRTMIN+statussig, sv);
+	sigqueue(statuspid, SIGUSR1, sv);
 }
 
 void
