@@ -252,6 +252,7 @@ static void sendmon(Client *c, Monitor *m);
 static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
+static void nextlayout(const Arg *arg);
 static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
@@ -1924,6 +1925,16 @@ setfullscreen(Client *c, int fullscreen)
 		resizeclient(c, c->x, c->y, c->w, c->h);
 		arrange(c->mon);
 	}
+}
+
+void
+nextlayout(const Arg *arg)
+{
+	Arg foo = { .v = selmon->lt[selmon->sellt] + 1 };
+
+	if (((Layout *)foo.v)->symbol == NULL && ((Layout *)foo.v)->arrange == NULL)
+		foo.v = &layouts;
+	setlayout(&foo);
 }
 
 void
