@@ -1359,6 +1359,7 @@ loadxrdb()
   XrmDatabase xrdb;
   char *type;
   XrmValue value;
+  char buf[260];
 
   display = XOpenDisplay(NULL);
 
@@ -1367,6 +1368,8 @@ loadxrdb()
 
     if (resm != NULL) {
       xrdb = XrmGetStringDatabase(resm);
+      snprintf(buf, sizeof(buf), "%s/%s", getenv("HOME"), ".Xresources");
+      XrmMergeDatabases(XrmGetFileDatabase(buf), &xrdb);
 
       if (xrdb != NULL) {
         XRDB_LOAD_COLOR("dwm.normbordercolor", normbordercolor);
