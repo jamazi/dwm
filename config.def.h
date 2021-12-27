@@ -7,7 +7,7 @@ static const unsigned int gappih    = 5;        /* horiz inner gap between windo
 static const unsigned int gappiv    = 5;        /* vert inner gap between windows */
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
-static       int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
+static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft  = 0;   /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -67,7 +67,7 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "嗢", "", "", "" };
+static const char *tags[] = { "", "", "", "嗢", "", "", "", "", "" };
 static const char *ntags[] = { "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉" };
 
 static const Rule rules[] = {
@@ -83,12 +83,12 @@ static const Rule rules[] = {
 	{ "Arandr",      NULL,                   NULL,           0,            1,           0,          0,          -1 },
 	{ "Sxiv",        NULL,                   NULL,           0,            1,           0,          0,          -1 },
 	{ "Tor Browser", NULL,                   NULL,           0,            1,           0,          0,          -1 },
-	{ "pcmanfm-qt",  NULL,                   NULL,           0,            1,           0,          0,          -1 },	
+	{ "Pavucontrol", NULL,                   NULL,           0,            1,           0,          0,          -1 },	
 	{ NULL,          "floating",             NULL,           0,            1,           0,          0,          -1 },
 	{ NULL,          "keepassxc",            NULL,           0,            1,           0,          0,          -1 },	
 	{ NULL,          "gedit",                NULL,           0,            1,           0,          0,          -1 },	
 	{ NULL,          "nm-connection-editor", NULL,           0,            1,           0,          0,          -1 },	
-	{ NULL,          "telegram-desktop",     NULL,           1 << 4,       1,           0,          0,          -1 },	
+	{ NULL,          "telegram-desktop",     NULL,           1 << 2,       1,           0,          0,          -1 },	
 	{ NULL,          NULL,                   "Event Tester", 0,            1,           0,          1,          -1 },	
 };
 
