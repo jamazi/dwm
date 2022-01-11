@@ -84,7 +84,10 @@ static const Rule rules[] = {
 	{ "Sxiv",        NULL,                   NULL,           0,            1,           0,          0,          -1 },
 	{ "Tor Browser", NULL,                   NULL,           0,            1,           0,          0,          -1 },
 	{ "Pavucontrol", NULL,                   NULL,           0,            1,           0,          0,          -1 },	
+	{ "Bijiben",     NULL,                   NULL,           0,            1,           0,          0,          -1 },
+	{ "floating",    NULL,                   NULL,           0,            1,           0,          0,          -1 },
 	{ NULL,          "floating",             NULL,           0,            1,           0,          0,          -1 },
+	{ NULL,          "qalculate-gtk",        NULL,           0,            1,           0,          0,          -1 },
 	{ NULL,          "keepassxc",            NULL,           0,            1,           0,          0,          -1 },	
 	{ NULL,          "gedit",                NULL,           0,            1,           0,          0,          -1 },	
 	{ NULL,          "nm-connection-editor", NULL,           0,            1,           0,          0,          -1 },	
@@ -95,7 +98,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact        = 0.65; /* factor of master area size [0.05..0.95] */
 static const int nmaster        = 1;    /* number of clients in master area */
-static const int resizehints    = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints    = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
 static const int attachbelow    = 1;    /* 1 means attach after the currently active window */
 
@@ -170,8 +173,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_k,                      focusstack,     {.i = INC(-1) } },
 	{ MODKEY|ShiftMask,             XK_j,                      pushstack,      {.i = INC(+1) } },
 	{ MODKEY|ShiftMask,             XK_k,                      pushstack,      {.i = INC(-1) } },
-	{ MODKEY,                       XK_i,                      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,                      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_equal,                  incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_minus,                  incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_bracketleft,            setmfact,       {.f = -0.02} },
 	{ MODKEY,                       XK_bracketright,           setmfact,       {.f = +0.02} },
 	{ MODKEY,                       XK_Return,                 zoom,           {0} },
