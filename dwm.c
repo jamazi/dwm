@@ -49,6 +49,7 @@
 #include <sys/sysctl.h>
 #include <kvm.h>
 #endif /* __OpenBSD */
+#include <fribidi.h>
 
 #include "drw.h"
 #include "util.h"
@@ -329,7 +330,8 @@ static pid_t winpid(Window w);
 /* variables */
 static Systray *systray =  NULL;
 static const char broken[] = "broken";
-static char stext[1024];
+static char stext[BUFSIZ];
+static char fribidi_text[BUFSIZ] = "";
 static int statussig;
 static int statusw;
 static pid_t statuspid = -1;
@@ -375,6 +377,26 @@ static unsigned int scratchtag = 1 << LENGTH(tags);
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
 /* function implementations */
+void
+apply_fribidi(char *str)
+{
+	FriBidiStrIndex len = strlen(str);
+	FriBidiChar logical[BUFSIZ];
+	FriBidiChar visual[BUFSIZ];
+	FriBidiParType base = FRIBIDI_PAR_ON;
+	FriBidiCharSet charset;
+	fribidi_boolean result;
+
+	fribidi_text[0] = 0;
+	if (len>0)
+	{
+		charset = fribidi_parse_charset("UTF-8");
+		len = fribidi_charset_to_unicode(charset, str, len, logical);
+		result = fribidi_log2vis(logical, len, &base, visual, NULL, NULL, NULL);
+		len = fribidi_unicode_to_charset(charset, visual, len, fribidi_text);
+	}
+}
+
 void
 applyrules(Client *c)
 {
@@ -1056,8 +1078,9 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 	}
 
 	if (!isCode) {
-		w = TEXTW(text) - lrpad;
-		drw_text(drw, x, 0, w, bh, 0, text, 0);
+		apply_fribidi(text);
+		w = TEXTW(fribidi_text) - lrpad;
+		drw_text(drw, x, 0, w, bh, 0, fribidi_text, 0);
 	}
 
 	drw_setscheme(drw, scheme[SchemeNorm]);
@@ -1094,9 +1117,10 @@ drawbar(Monitor *m)
 	}
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
-		w = TEXTW(tags[i]);
+		apply_fribidi(tags[i]);
+		w = TEXTW(fribidi_text);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
-		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+		drw_text(drw, x, 0, w, bh, lrpad / 2, fribidi_text, urg & 1 << i);
 		drw_text(drw, x, lrpad, w, 0, 0, ntags[i], urg & 1 << i);
 		if (occ & 1 << i)
 			drw_rect(drw, x + boxs, boxs, boxw, boxw,
@@ -1104,14 +1128,16 @@ drawbar(Monitor *m)
 				urg & 1 << i);
 		x += w;
 	}
-	w = blw = TEXTW(m->ltsymbol);
+	apply_fribidi(m->ltsymbol);
+	w = blw = TEXTW(fribidi_text);
 	drw_setscheme(drw, scheme[SchemeNorm]);
-	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+	x = drw_text(drw, x, 0, w, bh, lrpad / 2, fribidi_text, 0);
 
 	if ((w = m->ww - tw - stw - x) > bh) {
 		if (m->sel) {
 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
-			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+			apply_fribidi(m->sel->name);
+			drw_text(drw, x, 0, w, bh, lrpad / 2, fribidi_text, 0);
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
 		} else {
