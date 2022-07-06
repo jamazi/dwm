@@ -134,6 +134,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2]            = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *clipmenucmd[]   = { "clipmenu", NULL };
 static const char *termcmd[]       = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "alacritty", "-t", "scratchpad", "-e", "nano", "/tmp/scratchpad", NULL };
@@ -143,6 +144,7 @@ static Key keys[] = {
 
 	/* applications */
 	{ MODKEY,                       XK_r,                      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_y,                      spawn,          {.v = clipmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,                 spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,                  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_w,                      spawn,          SHCMD("$BROWSER") },
