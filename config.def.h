@@ -160,9 +160,9 @@ static Key keys[] = {
 	{ 0,                            XF86XK_TouchpadToggle,     spawn,          SHCMD("toggle_touchpad") },
 	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD("xbacklight -inc 5") },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          SHCMD("xbacklight -dec 5") },
-	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD("amixer -q sset Master 5%+ ; pkill -RTMIN+1 dwmblocks") },
-	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          SHCMD("amixer -q sset Master 5%- ; pkill -RTMIN+1 dwmblocks") },
-	{ 0,                            XF86XK_AudioMute,          spawn,          SHCMD("amixer -q sset Master toggle ; pkill -RTMIN+1 dwmblocks") },
+	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% ; pkill -RTMIN+1 dwmblocks") },
+	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% ; pkill -RTMIN+1 dwmblocks") },
+	{ 0,                            XF86XK_AudioMute,          spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle ; pkill -RTMIN+1 dwmblocks") },
 
 	/* dwm commands */
 	{ MODKEY,                       XK_b,                      togglebar,      {0} },
