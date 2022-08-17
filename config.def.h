@@ -76,24 +76,24 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class         instance                title           tags mask     isfloating   isterminal  noswallow   monitor */
-	{ "Alacritty",   NULL,                   NULL,           0,            0,           1,          0,          -1 },
-	{ "vlc",         NULL,                   NULL,           0,            1,           0,          0,          -1 },
-	{ "mpv",         NULL,                   NULL,           0,            1,           0,          0,          -1 },
-	{ "Shotwell",    NULL,                   NULL,           0,            1,           0,          0,          -1 },
-	{ "Arandr",      NULL,                   NULL,           0,            1,           0,          0,          -1 },
-	{ "Sxiv",        NULL,                   NULL,           0,            1,           0,          0,          -1 },
-	{ "Tor Browser", NULL,                   NULL,           0,            1,           0,          0,          -1 },
-	{ "Pavucontrol", NULL,                   NULL,           0,            1,           0,          0,          -1 },	
-	{ "Bijiben",     NULL,                   NULL,           0,            1,           0,          0,          -1 },
-	{ "floating",    NULL,                   NULL,           0,            1,           0,          0,          -1 },
-	{ NULL,          "floating",             NULL,           0,            1,           0,          0,          -1 },
-	{ NULL,          "qalculate-gtk",        NULL,           0,            1,           0,          0,          -1 },
-	{ NULL,          "keepassxc",            NULL,           0,            1,           0,          0,          -1 },	
-	{ NULL,          "gedit",                NULL,           0,            1,           0,          0,          -1 },	
-	{ NULL,          "nm-connection-editor", NULL,           0,            1,           0,          0,          -1 },	
-	{ NULL,          "telegram-desktop",     NULL,           1 << 2,       1,           0,          0,          -1 },	
-	{ NULL,          NULL,                   "Event Tester", 0,            1,           0,          1,          -1 },	
+	/* class                instance                    title               tags mask     isfloating   isterminal  noswallow   monitor */
+	{ "Alacritty",          NULL,                       NULL,               0,            0,           1,          0,          -1 },
+	{ "vlc",                NULL,                       NULL,               0,            1,           0,          0,          -1 },
+	{ "mpv",                NULL,                       NULL,               0,            1,           0,          0,          -1 },
+	{ "Shotwell",           NULL,                       NULL,               0,            1,           0,          0,          -1 },
+	{ "Arandr",             NULL,                       NULL,               0,            1,           0,          0,          -1 },
+	{ "Sxiv",               NULL,                       NULL,               0,            1,           0,          0,          -1 },
+	{ "Tor Browser",        NULL,                       NULL,               0,            1,           0,          0,          -1 },
+	{ "Pavucontrol",        NULL,                       NULL,               0,            1,           0,          0,          -1 },
+	{ "Bijiben",            NULL,                       NULL,               0,            1,           0,          0,          -1 },
+	{ "floating",           NULL,                       NULL,               0,            1,           0,          0,          -1 },
+	{ NULL,                 "floating",                 NULL,               0,            1,           0,          0,          -1 },
+	{ NULL,                 "qalculate-gtk",            NULL,               0,            1,           0,          0,          -1 },
+	{ NULL,                 "keepassxc",                NULL,               0,            1,           0,          0,          -1 },
+	{ NULL,                 "gedit",                    NULL,               0,            1,           0,          0,          -1 },
+	{ NULL,                 "nm-connection-editor",     NULL,               0,            1,           0,          0,          -1 },
+	{ NULL,                 "telegram-desktop",         NULL,               1 << 2,       1,           0,          0,          -1 },
+	{ NULL,                 NULL,                       "Event Tester",     0,            1,           0,          1,          -1 },
 };
 
 /* layout(s) */
