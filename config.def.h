@@ -78,6 +78,7 @@ static const Rule rules[] = {
 	 */
 	/* class                instance                    title               tags mask     isfloating   isterminal  noswallow   monitor */
 	{ "Alacritty",          NULL,                       NULL,               0,            0,           1,          0,          -1 },
+	{ "Gnome-terminal",     NULL,                       NULL,               0,            0,           1,          0,          -1 },
 	{ "vlc",                NULL,                       NULL,               0,            1,           0,          0,          -1 },
 	{ "mpv",                NULL,                       NULL,               0,            1,           0,          0,          -1 },
 	{ "Shotwell",           NULL,                       NULL,               0,            1,           0,          0,          -1 },
@@ -135,9 +136,9 @@ static const Layout layouts[] = {
 static char dmenumon[2]            = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *clipmenucmd[]   = { "clipmenu", NULL };
-static const char *termcmd[]       = { "alacritty", NULL };
+static const char *termcmd[]       = { "gnome-terminal", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "alacritty", "-t", "scratchpad", "-e", "nano", "/tmp/scratchpad", NULL };
+static const char *scratchpadcmd[] = { "gnome-terminal", "-t", "scratchpad", "-e", "nano", "/tmp/scratchpad", NULL };
 
 static Key keys[] = {
 	/* modifier                     key                        function        argument */
