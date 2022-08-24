@@ -78,7 +78,6 @@ static const Rule rules[] = {
 	 */
 	/* class                instance                    title               tags mask     isfloating   isterminal  noswallow   monitor */
 	{ "Alacritty",          NULL,                       NULL,               0,            0,           1,          0,          -1 },
-	{ "vlc",                NULL,                       NULL,               0,            1,           0,          0,          -1 },
 	{ "mpv",                NULL,                       NULL,               0,            1,           0,          0,          -1 },
 	{ "Shotwell",           NULL,                       NULL,               0,            1,           0,          0,          -1 },
 	{ "Arandr",             NULL,                       NULL,               0,            1,           0,          0,          -1 },
@@ -92,7 +91,7 @@ static const Rule rules[] = {
 	{ NULL,                 "keepassxc",                NULL,               0,            1,           0,          0,          -1 },
 	{ NULL,                 "gedit",                    NULL,               0,            1,           0,          0,          -1 },
 	{ NULL,                 "nm-connection-editor",     NULL,               0,            1,           0,          0,          -1 },
-	{ NULL,                 "telegram-desktop",         NULL,               1 << 2,       1,           0,          0,          -1 },
+	{ NULL,                 "telegram-desktop",         NULL,               1 << 2,       0,           0,          0,          -1 },
 	{ NULL,                 NULL,                       "Event Tester",     0,            1,           0,          1,          -1 },
 };
 
