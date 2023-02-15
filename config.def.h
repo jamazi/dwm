@@ -93,6 +93,7 @@ static const Rule rules[] = {
 	{ NULL,                 "nm-connection-editor",     NULL,               0,            1,           0,          0,          -1 },
 	{ NULL,                 "telegram-desktop",         NULL,               1 << 2,       0,           0,          0,          -1 },
 	{ NULL,                 NULL,                       "Event Tester",     0,            1,           0,          1,          -1 },
+	{ NULL,                 "blueman-manager",          NULL,               0,            1,           0,          0,          -1 },
 };
 
 /* layout(s) */
