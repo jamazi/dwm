@@ -3,10 +3,10 @@
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 5;        /* horiz inner gap between windows */
-static const unsigned int gappiv    = 5;        /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih    = 12;        /* horiz inner gap between windows */
+static const unsigned int gappiv    = 12;        /* vert inner gap between windows */
+static const unsigned int gappoh    = 5;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 5;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft  = 0;   /* 0: systray in the right corner, >0: systray on left of status text */
@@ -94,6 +94,8 @@ static const Rule rules[] = {
 	{ NULL,                 "telegram-desktop",         NULL,               1 << 2,       0,           0,          0,          -1 },
 	{ NULL,                 NULL,                       "Event Tester",     0,            1,           0,          1,          -1 },
 	{ NULL,                 "blueman-manager",          NULL,               0,            1,           0,          0,          -1 },
+	{ NULL,                 "qbittorrent",              NULL,               0,            1,           0,          0,          -1 },
+	{ NULL,                 "nomacs",                   NULL,               0,            1,           0,          0,          -1 },
 };
 
 /* layout(s) */
@@ -148,6 +150,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return,                 spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,                  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_w,                      spawn,          SHCMD("$BROWSER") },
+	{ MODKEY,                       XK_e,                      spawn,          SHCMD("$BROWSER -p tor -new-window") },
 	{ MODKEY,                       XK_f,                      spawn,          SHCMD("$FILEMANAGER") },
 	{ MODKEY,                       XK_c,                      spawn,          SHCMD("qalculate-gtk") },
 	{ MODKEY,                       XK_g,                      spawn,          SHCMD("gedit") },
