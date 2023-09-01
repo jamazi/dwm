@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 12;        /* horiz inner gap between windows */
 static const unsigned int gappiv    = 12;        /* vert inner gap between windows */
-static const unsigned int gappoh    = 5;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 5;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappoh    = 8;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 8;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft  = 0;   /* 0: systray in the right corner, >0: systray on left of status text */
@@ -96,6 +96,7 @@ static const Rule rules[] = {
 	{ NULL,                 "blueman-manager",          NULL,               0,            1,           0,          0,          -1 },
 	{ NULL,                 "qbittorrent",              NULL,               0,            1,           0,          0,          -1 },
 	{ NULL,                 "nomacs",                   NULL,               0,            1,           0,          0,          -1 },
+	{ NULL,                 "opensnitch-ui",            NULL,               0,            1,           0,          0,          -1 },
 };
 
 /* layout(s) */
@@ -139,7 +140,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgco
 static const char *clipmenucmd[]   = { "clipmenu", NULL };
 static const char *termcmd[]       = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "alacritty", "-t", "scratchpad", "-e", "nano", "/tmp/scratchpad", NULL };
+static const char *scratchpadcmd[] = { "alacritty", "-t", "scratchpad", "-e", "tmux", "new", "-A", "-s", "scratchpad", "nano", "/tmp/scratchpad", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key                        function        argument */
