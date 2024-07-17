@@ -86,6 +86,7 @@ static const Rule rules[] = {
 	{ "Pavucontrol",        NULL,                       NULL,               0,            1,           0,          0,          -1 },
 	{ "Bijiben",            NULL,                       NULL,               0,            1,           0,          0,          -1 },
 	{ "floating",           NULL,                       NULL,               0,            1,           0,          0,          -1 },
+	{ "Emulator",           NULL,                       NULL,               0,            1,           0,          0,          -1 },
 	{ NULL,                 "floating",                 NULL,               0,            1,           0,          0,          -1 },
 	{ NULL,                 "qalculate-gtk",            NULL,               0,            1,           0,          0,          -1 },
 	{ NULL,                 "keepassxc",                NULL,               0,            1,           0,          0,          -1 },
